@@ -75,9 +75,9 @@
         4,
         {
           "VariableDeclarator": {
-            "var": 2,
-            "let": 2,
-            "const": 3
+            "var": 1,
+            "let": 1,
+            "const": 1
           },
           "flatTernaryExpressions": false,
           "MemberExpression": 1,
