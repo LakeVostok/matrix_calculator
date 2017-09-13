@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^8.0.0",
     "babel-loader": "^6.3.2",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
@@ -92,6 +93,7 @@
       ],
       "import/newline-after-import": "off"
     },
+    "parser": "babel-eslint",
     "parserOptions": {
       "sourceType": "module",
       "ecmaVersion": 6,
