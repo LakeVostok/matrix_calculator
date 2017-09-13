@@ -1,0 +1,133 @@
+{
+  "name": "matrix_calculator",
+  "version": "0.0.1",
+  "description": "Matrix calculator",
+  "main": "src/components/App.js",
+  "keywords": [],
+  "author": "LakeVostok",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run clear && webpack -p --progress --config ./webpack.prod.config.js",
+    "start": "webpack-dev-server --progress --hot --color",
+    "clear": "rimraf ./dist",
+    "lint": "eslint ./src --ext .jsx,js",
+    "lint-staged": "lint-staged"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.{js,jsx}": "lint"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.6.1",
+    "eslint-plugin-react": "^7.3.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "lint-staged": "^4.1.3",
+    "node-sass": "^4.5.3",
+    "pre-commit": "^1.2.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "eslintConfig": {
+    "rules": {
+      "quotes": [
+        "error",
+        "double",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "curly": [
+        "error",
+        "multi-or-nest"
+      ],
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ],
+      "dot-location": [
+        "error",
+        "property"
+      ],
+      "block-spacing": "error",
+      "eol-last": [
+        "error",
+        "always"
+      ],
+      "indent": [
+        "error",
+        4,
+        {
+          "VariableDeclarator": {
+            "var": 2,
+            "let": 2,
+            "const": 3
+          },
+          "flatTernaryExpressions": false,
+          "MemberExpression": 1,
+          "ObjectExpression": 1,
+          "ArrayExpression": 1,
+          "SwitchCase": 1
+        }
+      ],
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
+      "import/newline-after-import": "off"
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "root": true,
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "plugins": [
+      "react"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browser": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "react-hot-loader/babel"
+    ]
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}
