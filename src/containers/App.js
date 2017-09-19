@@ -29,6 +29,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
+                <button onClick={this.multiply}>mult</button>
                 <MatrixBoard
                     Result={this.state.Result}
                     A={this.state.A}
@@ -43,5 +44,28 @@ export default class App extends Component {
         let matrix = this.state[matrixName];
         matrix[row][column] = value;
         this.setState({ [matrixName]: matrix });
+    }
+
+    multiply = () => {
+        let { A, B, Result } = this.state;
+
+        let rows = Result.length;
+        let columns = Result[0].length;
+
+        let newResult = Storage(rows, columns);
+
+        for(let i = 0; i < rows; i++){
+            for(let j = 0; j < columns; j++){
+                let result = 0;
+
+                for(var y = 0; y < B.length; y++) {
+                    result += A[i][y] * B[y][j];
+                }
+
+                newResult[i][j] = result;
+            }
+        }
+
+        this.setState({ Result: newResult })
     }
 }
