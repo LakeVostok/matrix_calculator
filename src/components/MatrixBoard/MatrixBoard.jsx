@@ -3,7 +3,7 @@ import Matrix from "../Matrix"
 
 export default class MatrixBoard extends Component {
     render() {
-        let { A, B, Result } = this.props;
+        let { A, B, Result, onChange } = this.props;
         return (
             <div>
                 <div>
