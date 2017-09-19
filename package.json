@@ -56,7 +56,7 @@
       ],
       "curly": [
         "error",
-        "multi-or-nest"
+        "all"
       ],
       "brace-style": [
         "error",
