@@ -45,6 +45,7 @@ export default class Matrix extends Component {
                     value={cell}
                     placeholder={placeholder}
                     disabled={this.props.disabled}
+                    onChange={e => this.props.onChange(i, j, e.target.value)}
                 />
             </div>
         )
