@@ -16,6 +16,7 @@ export default class MatrixBoard extends Component {
                         data={A}
                         placeholder="a"
                         labelRight="A"
+                        onChange={(row, column, value) => onChange("A", row, column, value)}
                     />
                 </div>
                 <div>
@@ -23,6 +24,7 @@ export default class MatrixBoard extends Component {
                         data={B}
                         placeholder="b"
                         labelBottom="B"
+                        onChange={(row, column, value) => onChange("B", row, column, value)}
                     />
                 </div>
             </div>  
