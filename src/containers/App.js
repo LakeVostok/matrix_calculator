@@ -23,7 +23,8 @@ export default class App extends Component {
         this.state = {
             A: Storage(4, 2),
             B: Storage(2, 3),
-            Result: Storage(4,3)
+            Result: Storage(4,3),
+            active: "B"
         }
     }
 
@@ -34,6 +35,7 @@ export default class App extends Component {
                     multiply={this.multiply}
                     clear={this.clear}
                     swap={this.swap}
+                    selectActive={this.selectActive}
                 />
                 <MatrixBoard
                     Result={this.state.Result}
@@ -43,6 +45,10 @@ export default class App extends Component {
                 />
             </div>  
         );
+    }
+
+    selectActive = e => {
+        this.setState({ active: e.target.value });
     }
 
     changeHandler = (matrixName, row, column, value) => {
