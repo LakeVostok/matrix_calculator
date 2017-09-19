@@ -38,9 +38,14 @@ export default class Matrix extends Component {
     }
 
     renderCell = (cell, j, i) => {
+        let placeholder = `${this.props.placeholder}${i+1},${j+1}`
         return (
             <div key={j+"cell"+i} className="matrix--cell">
-                <Input value={cell} />
+                <Input
+                    value={cell}
+                    placeholder={placeholder}
+                    disabled={this.props.disabled}
+                />
             </div>
         )
     }

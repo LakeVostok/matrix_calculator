@@ -33,8 +33,15 @@ export default class App extends Component {
                     Result={this.state.Result}
                     A={this.state.A}
                     B={this.state.B}
+                    onChange={this.changeHandler}
                 />
             </div>  
         );
+    }
+
+    changeHandler = (matrixName, row, column, value) => {
+        let matrix = this.state[matrixName];
+        matrix[row][column] = value;
+        this.setState({ [matrixName]: matrix });
     }
 }

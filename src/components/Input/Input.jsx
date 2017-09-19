@@ -5,10 +5,11 @@ import "./Input.scss";
 
 export default class Input extends Component {
     render() {
-        let { value, onChange, disabled } = this.props;
+        let { value, onChange, disabled, placeholder } = this.props;
         return (
             <input
                 value={value}
+                placeholder={placeholder}
                 onChange={onChange}
                 disabled={disabled}
                 className="input"
