@@ -20,7 +20,9 @@ export default class Matrix extends Component {
                         }
                     </div>
                     <div className="bracket bracket--right"></div>
+                    { labelRight && <div className="label label--right">{labelRight}</div> }
                 </div>
+                { labelBottom && <div className="label label--bottom">{labelBottom}</div> }
             </div>
         );
     }
