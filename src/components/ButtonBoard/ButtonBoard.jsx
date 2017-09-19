@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class ButtonBoard extends Component {
     render() {
@@ -22,3 +23,45 @@ export default class ButtonBoard extends Component {
         );
     }
 }
+
+ButtonBoard.propTypes = {
+    /**
+     * Callback to multiply matrixes
+     */
+    multiply: PropTypes.func,
+
+    /**
+     * Callback to clear matrixes
+     */
+    clear: PropTypes.func,
+
+    /**
+     * Callback to swap matrixes
+     */
+    swap: PropTypes.func,
+
+    /**
+     * Callback to switch active matrix
+     */
+    selectActive: PropTypes.func,
+
+    /**
+     * Callback to add row
+     */
+    addRow: PropTypes.func,
+
+    /**
+     * Callback to remove row
+     */
+    removeRow: PropTypes.func,
+
+    /**
+     * Callback to add column
+     */
+    addColumn: PropTypes.func,
+
+    /**
+     * Callback to remove column
+     */
+    removeColumn: PropTypes.func
+};
