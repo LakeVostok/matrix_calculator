@@ -32,6 +32,7 @@ export default class App extends Component {
             <div>
                 <ButtonBoard
                     multiply={this.multiply}
+                    clear={this.clear}
                 />
                 <MatrixBoard
                     Result={this.state.Result}
@@ -70,5 +71,19 @@ export default class App extends Component {
         }
 
         this.setState({ Result: newResult })
+    }
+
+    clear = () => {
+        let { A, B, Result } = this.state;
+
+        let newA = Storage(A.length, A[0].length);
+        let newB = Storage(B.length, B[0].length);
+        let newResult = Storage(Result.length, Result[0].length);
+
+        this.setState({
+            A: newA,
+            B: newB,
+            Result: newResult
+        })
     }
 }
