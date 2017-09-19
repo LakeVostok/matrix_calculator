@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import MatrixBoard from "../components/MatrixBoard"
+import MatrixBoard from "../components/MatrixBoard";
+import ButtonBoard from "../components/ButtonBoard"
 
 function Storage(rows, columns) {
     let storage = [];
@@ -29,7 +30,9 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.multiply}>mult</button>
+                <ButtonBoard
+                    multiply={this.multiply}
+                />
                 <MatrixBoard
                     Result={this.state.Result}
                     A={this.state.A}

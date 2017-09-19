@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class ButtonBoard extends Component {
     render() {
-        render (
+        return (
             <div>
                 <button onClick={this.props.multiply}>Умножить матрицы</button>
                 <br />
