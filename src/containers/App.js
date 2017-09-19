@@ -33,6 +33,7 @@ export default class App extends Component {
                 <ButtonBoard
                     multiply={this.multiply}
                     clear={this.clear}
+                    swap={this.swap}
                 />
                 <MatrixBoard
                     Result={this.state.Result}
@@ -83,6 +84,18 @@ export default class App extends Component {
         this.setState({
             A: newA,
             B: newB,
+            Result: newResult
+        })
+    }
+
+    swap = () => {
+        let { A, B, Result } = this.state;
+
+        let newResult = Storage(B.length, A[0].length);
+
+        this.setState({
+            A: B,
+            B: A,
             Result: newResult
         })
     }
