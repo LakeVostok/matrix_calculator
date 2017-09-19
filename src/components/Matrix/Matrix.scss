@@ -1,6 +1,27 @@
-.matrix {
+.matrix--wrapper {
     display: inline-block;
+}
+
+.matrix {
+    display: flex;
+}
+
+.matrix--data {
+    margin: 10px 0;
 }
 .matrix--row {
     display: flex;
+}
+
+.bracket {
+    width: 8px;
+    border: 2px solid black;
+}
+
+.bracket--left {
+    border-right: none;
+}
+
+.bracket--right {
+    border-left: none;
 }

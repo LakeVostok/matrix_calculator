@@ -10,10 +10,17 @@ export default class Matrix extends Component {
         let { data, labelRight, labelBottom } = this.props;
 
         return (
-            <div className="matrix">
-                {
-                    data.map(this.renderRow)
-                }
+
+            <div className="matrix--wrapper">
+                <div className="matrix">
+                    <div className="bracket bracket--left"></div>
+                    <div className="matrix--data">
+                        {
+                            data.map(this.renderRow)
+                        }
+                    </div>
+                    <div className="bracket bracket--right"></div>
+                </div>
             </div>
         );
     }
