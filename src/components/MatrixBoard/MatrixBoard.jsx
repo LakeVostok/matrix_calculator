@@ -7,11 +7,23 @@ export default class MatrixBoard extends Component {
         return (
             <div>
                 <div>
-                    <Matrix data={Result}  />
-                    <Matrix data={A} labelRight="A"/>
+                    <Matrix
+                        data={Result}
+                        placeholder="c"
+                        disabled
+                    />
+                    <Matrix
+                        data={A}
+                        placeholder="a"
+                        labelRight="A"
+                    />
                 </div>
                 <div>
-                    <Matrix data={B} labelBottom="B" />
+                    <Matrix
+                        data={B}
+                        placeholder="b"
+                        labelBottom="B"
+                    />
                 </div>
             </div>  
         );
