@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { Radio, RadioGroup } from "../Radio";
+
 export default class ButtonBoard extends Component {
     render() {
         return (
@@ -11,9 +13,14 @@ export default class ButtonBoard extends Component {
                 <br />
                 <button onClick={this.props.swap}>Поменять матрицы местами</button>
                 <br />
-                <input onChange={this.props.selectActive} value="A" type="radio" name="choose" />Матрица А
-                <input onChange={this.props.selectActive} value="B" type="radio" name="choose" />Матрица В
-                <br />
+                <RadioGroup
+                    name="active_matrix"
+                    checked={this.props.active}
+                    onChange={this.props.selectActive}
+                >
+                    <Radio value="A">Матрица А</Radio>
+                    <Radio value="B">Матрица В</Radio>
+                </RadioGroup>
                 <button onClick={() => this.props.editSize("row", 1)}>Добавить</button>
                 <button onClick={() => this.props.editSize("row", -1)}>Удалить</button> Строку
                 <br />

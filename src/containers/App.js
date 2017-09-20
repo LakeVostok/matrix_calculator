@@ -28,6 +28,7 @@ export default class App extends Component {
                     multiply={this.multiply}
                     clear={this.clear}
                     swap={this.swap}
+                    active={this.state.active}
                     selectActive={this.selectActive}
                     addRow={this.addRow}
                     editSize={this.editSize}
