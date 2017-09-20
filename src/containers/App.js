@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "./App.scss";
+
 import MatrixBoard from "../components/MatrixBoard";
 import ButtonBoard from "../components/ButtonBoard"
 
@@ -18,10 +20,10 @@ export default class App extends Component {
     componentWillMount() {
         this.initResult(this.state.A, this.state.B);
     }
-    
+
     render() {
         return (
-            <div>
+            <div className="calculator">
                 <ButtonBoard
                     multiply={this.multiply}
                     clear={this.clear}
@@ -52,7 +54,7 @@ export default class App extends Component {
     selectActive = e => {
         this.setState({ active: e.target.value });
     }
-    
+
     changeHandler = (matrixName, row, column, value) => {
         let matrix = this.state[matrixName];
         matrix.setValue(row, column, value);
@@ -87,7 +89,7 @@ export default class App extends Component {
         A.clear();
         B.clear();
         Result.clear();
-        
+
         this.setState({ A, B, Result });
     }
 
