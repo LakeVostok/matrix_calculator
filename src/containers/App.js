@@ -2,32 +2,23 @@ import React, { Component } from "react";
 import MatrixBoard from "../components/MatrixBoard";
 import ButtonBoard from "../components/ButtonBoard"
 
-function Storage(rows, columns) {
-    let storage = [];
-
-    for(let i = 0; i < rows; i++) {
-        storage.push([]);
-
-        for(let j = 0; j < columns; j++) {
-            storage[i].push("")
-        }
-    }
-
-    return storage;
-}
+import { Matrix, Result } from "./Matrix.js";
 
 export default class App extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            A: Storage(4, 2),
-            B: Storage(2, 3),
-            Result: Storage(4,3),
+            A: new Matrix(4, 2),
+            B: new Matrix(2, 3),
             active: "B"
-        }
+        }        
     }
 
+    componentWillMount() {
+        this.initResult(this.state.A, this.state.B);
+    }
+    
     render() {
         return (
             <div>
@@ -36,73 +27,77 @@ export default class App extends Component {
                     clear={this.clear}
                     swap={this.swap}
                     selectActive={this.selectActive}
+                    addRow={this.addRow}
+                    editSize={this.editSize}
                 />
                 <MatrixBoard
-                    Result={this.state.Result}
-                    A={this.state.A}
-                    B={this.state.B}
+                    Result={this.state.Result.storage}
+                    A={this.state.A.storage}
+                    B={this.state.B.storage}
                     onChange={this.changeHandler}
                 />
             </div>  
         );
     }
 
+    initResult = (A, B) => {
+        this.setState({ Result: new Result(A, B) });
+    }
+
+    updateResult = () => {
+        this.state.Result.update();
+        this.forceUpdate();
+    }
+
     selectActive = e => {
         this.setState({ active: e.target.value });
     }
-
+    
     changeHandler = (matrixName, row, column, value) => {
         let matrix = this.state[matrixName];
-        matrix[row][column] = value;
-        this.setState({ [matrixName]: matrix });
+        matrix.setValue(row, column, value);
+        
+        this.forceUpdate();
     }
 
     multiply = () => {
         let { A, B, Result } = this.state;
 
-        let rows = Result.length;
-        let columns = Result[0].length;
-
-        let newResult = Storage(rows, columns);
+        let rows = Result.rowsCount();
+        let columns = Result.columnsCount();
 
         for(let i = 0; i < rows; i++){
             for(let j = 0; j < columns; j++){
                 let result = 0;
 
-                for(var y = 0; y < B.length; y++) {
-                    result += A[i][y] * B[y][j];
+                for(let y = 0; y < B.rowsCount(); y++) {
+                    result += A.getValue(i, y) * B.getValue(y, j);
                 }
 
-                newResult[i][j] = result;
+                Result.setValue(i, j, result);
             }
         }
 
-        this.setState({ Result: newResult })
+        this.setState({ Result });
     }
 
     clear = () => {
         let { A, B, Result } = this.state;
 
-        let newA = Storage(A.length, A[0].length);
-        let newB = Storage(B.length, B[0].length);
-        let newResult = Storage(Result.length, Result[0].length);
-
-        this.setState({
-            A: newA,
-            B: newB,
-            Result: newResult
-        })
+        A.clear();
+        B.clear();
+        Result.clear();
+        
+        this.setState({ A, B, Result });
     }
 
     swap = () => {
-        let { A, B, Result } = this.state;
-
-        let newResult = Storage(B.length, A[0].length);
+        let { A, B } = this.state;
 
         this.setState({
             A: B,
             B: A,
-            Result: newResult
+            Result: new Result(B, A)
         })
     }
 }
