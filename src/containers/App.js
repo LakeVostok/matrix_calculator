@@ -100,4 +100,17 @@ export default class App extends Component {
             Result: new Result(B, A)
         })
     }
+
+    editSize = (unit, amount) => {
+        let activeMatrix = this.state[this.state.active];
+
+        if(unit == "row") {
+            amount > 0 ? activeMatrix.addRow() : activeMatrix.removeRow();
+        }
+        else {
+            amount > 0 ? activeMatrix.addColumn() : activeMatrix.removeColumn();
+        }
+
+        this.updateResult();
+    }
 }
