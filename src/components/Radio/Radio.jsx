@@ -5,7 +5,14 @@ import "./Radio.scss";
 
 export class RadioGroup extends Component {
     render() {
-        return <div onChange={this.props.onChange}>{this.props.children}</div>;
+        return (
+            <div
+                onChange={this.props.onChange}
+                className="radio-group"
+            >
+                {this.props.children}
+            </div>
+        );
     }
 
     getChildContext() {
@@ -43,13 +50,15 @@ export class Radio extends Component {
         let { children, value } = this.props;
   
         return (
-            <label>
+            <label className="radio--label">
                 <input
                     type="radio"
                     name={name}
                     value={value}
                     checked={value==checked}
+                    className="radio--input"
                 />
+                <div className="radio--button"></div>
                 { children }
             </label>
         );
