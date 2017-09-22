@@ -50,7 +50,7 @@ export class Radio extends Component {
         let { children, value } = this.props;
   
         return (
-            <label className="radio--label">
+            <label>
                 <input
                     type="radio"
                     name={name}
