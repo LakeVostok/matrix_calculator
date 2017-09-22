@@ -40,7 +40,12 @@ RadioGroup.propTypes = {
     /**
      * Checked state of input
      */
-    checked: PropTypes.string
+    checked: PropTypes.string,
+
+    /**
+     * Change handler
+     */
+    onChange: PropTypes.func
 };  
 
 

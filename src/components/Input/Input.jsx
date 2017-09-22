@@ -6,7 +6,7 @@ import "./Input.scss";
 export default class Input extends Component {
     render() {
         let { value, onChange, disabled, placeholder, showErrors } = this.props;
-        let error = !value && showErrors
+        let error = !value && showErrors;
         let className = `input${error ? " error": ""}`;
 
         return (

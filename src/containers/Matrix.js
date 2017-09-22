@@ -76,19 +76,11 @@ class Result extends Matrix {
             return;
         }
 
-        if(selfRows < a) {
-            this.addRow();
-        }
-        if(selfRows > a) {
-            this.removeRow();
-        }
-        if(selfColumns < b) {
-            this.addColumn();
-        }
-        if(selfColumns > b) {
-            this.removeColumn();
-        }
-        
+        selfRows < a && this.addRow();
+        selfRows > a && this.removeRow();
+        selfColumns < b && this.addColumn();
+        selfColumns > b && this.removeColumn();
+
         this.update();
     }
 }

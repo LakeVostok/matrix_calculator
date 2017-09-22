@@ -17,7 +17,7 @@ export class Button extends Component {
 
         return (
             <button className={this.className} onClick={onClick} disabled={disabled}>
-                { icon && <Icon name={icon}/>}
+                { icon && <Icon name={icon}/> }
                 {children}
             </button>
         );
@@ -55,5 +55,10 @@ Button.propTypes = {
     /**
      * Disabled state of button
      */
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+
+    /**
+     * Name of nested icon
+     */
+    icon: PropTypes.string
 };

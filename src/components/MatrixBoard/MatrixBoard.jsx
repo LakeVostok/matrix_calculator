@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Matrix from "../Matrix";
 import Gapped from "../Gapped";
 

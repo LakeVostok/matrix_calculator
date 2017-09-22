@@ -1,6 +1,6 @@
 {
   "name": "matrix_calculator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Matrix calculator",
   "main": "src/components/App.js",
   "keywords": [],

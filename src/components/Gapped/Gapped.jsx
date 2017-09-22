@@ -23,10 +23,10 @@ export default class Gapped extends Component {
                 <div style={style}>
                     {child}
                 </div>
-            )
+            );
         });
 
-        return <div className={ wrap ? "" : "nowrap"}>{items}</div>
+        return <div className={ wrap ? "" : "nowrap"}>{items}</div>;
     }
 }
 

@@ -11,15 +11,12 @@ export default class Matrix extends Component {
         let { data, labelRight, labelBottom } = this.props;
 
         return (
-
             <div className="matrix--wrapper">
                 <div className="matrix">
                     <div className="bracket bracket--left"></div>
                     <div className="matrix--data">
                         <Gapped gap={10} vertical>
-                            {
-                                data.map(this.renderRow)
-                            }
+                            { data.map(this.renderRow) }
                         </Gapped>
                     </div>
                     <div className="bracket bracket--right"></div>
@@ -39,11 +36,11 @@ export default class Matrix extends Component {
                     }
                 </Gapped>
             </div>
-        )
+        );
     }
 
     renderCell = (cell, j, i) => {
-        let placeholder = `${this.props.placeholder}${i+1},${j+1}`
+        let placeholder = `${this.props.placeholder}${i+1},${j+1}`;
 
         return (
             <div key={j+"cell"+i} className="matrix--cell">
@@ -55,7 +52,7 @@ export default class Matrix extends Component {
                     showErrors={this.props.showErrors}
                 />
             </div>
-        )
+        );
     }
 }
 
