@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import Icon from "../Icon";
+
 import "./Button.scss";
 
 export class Button extends Component {
@@ -11,10 +13,11 @@ export class Button extends Component {
     }
 
     render() {
-        let { children, onClick, disabled } = this.props;
+        let { children, onClick, disabled, icon } = this.props;
 
         return (
             <button className={this.className} onClick={onClick} disabled={disabled}>
+                { icon && <Icon name={icon}/>}
                 {children}
             </button>
         );
