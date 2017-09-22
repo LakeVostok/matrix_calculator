@@ -39,16 +39,16 @@ export default class ButtonBoard extends Component {
 
                 <div className="group--button">
                     <Gapped gap={10}>
-                        <Button onClick={() => this.props.editSize("row", 1)} icon="add">Добавить</Button>
-                        <Button onClick={() => this.props.editSize("row", -1)} icon="remove">Удалить</Button>
+                        <Button onClick={() => this.props.editSize("row", 1)} icon="add" disabled={this.props.rows >= this.props.max}>Добавить</Button>
+                        <Button onClick={() => this.props.editSize("row", -1)} icon="remove" disabled={this.props.rows <= this.props.min}>Удалить</Button>
                         cтроку
                     </Gapped>
                 </div>
 
                 <div className="group--button">
                     <Gapped gap={10}>
-                        <Button onClick={() => this.props.editSize("column", 1)} icon="add">Добавить</Button>
-                        <Button onClick={() => this.props.editSize("column", -1)} icon="remove">Удалить</Button>
+                        <Button onClick={() => this.props.editSize("column", 1)} icon="add" disabled={this.props.columns >= this.props.max}>Добавить</Button>
+                        <Button onClick={() => this.props.editSize("column", -1)} icon="remove" disabled={this.props.columns <= this.props.min}>Удалить</Button>
                         cтолбец
                     </Gapped>
                 </div>

@@ -13,7 +13,9 @@ export default class App extends Component {
         this.state = {
             A: new Matrix(4, 2),
             B: new Matrix(2, 3),
-            active: "B"
+            active: "B",
+            max: 10,
+            min: 2
         }        
     }
 
@@ -33,6 +35,10 @@ export default class App extends Component {
                     addRow={this.addRow}
                     editSize={this.editSize}
                     error={this.state.A.columnsCount() != this.state.B.rowsCount()}
+                    max={this.state.max}
+                    min={this.state.min}
+                    rows={this.state[this.state.active].rowsCount()}
+                    columns={this.state[this.state.active].columnsCount()}
                 />
                 <MatrixBoard
                     Result={this.state.Result.storage}
