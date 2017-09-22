@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./App.scss";
 
 import MatrixBoard from "../components/MatrixBoard";
-import ButtonBoard from "../components/ButtonBoard"
-
+import ButtonBoard from "../components/ButtonBoard";
 import { Matrix, Result } from "./Matrix.js";
 
+import "./App.scss";
+
 export default class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -15,7 +15,8 @@ export default class App extends Component {
             B: new Matrix(2, 3),
             active: "B",
             max: 10,
-            min: 2
+            min: 2,
+            showErrors: false
         }        
     }
 
@@ -44,6 +45,7 @@ export default class App extends Component {
                     A={this.state.A.storage}
                     B={this.state.B.storage}
                     onChange={this.changeHandler}
+                    showErrors={this.state.showErrors}
                 />
             </div>  
         );
@@ -70,24 +72,34 @@ export default class App extends Component {
     }
 
     multiply = () => {
-        let { A, B, Result } = this.state;
+        let { A, B } = this.state;
 
-        let rows = Result.rowsCount();
-        let columns = Result.columnsCount();
+        let rows = A.rowsCount();
+        let columns = B.columnsCount();
+        let scale = B.rowsCount();
 
-        for(let i = 0; i < rows; i++){
-            for(let j = 0; j < columns; j++){
+        let newResult = new Result(A, B);
+
+        for(let i = 0; i < rows; i++) {
+            for(let j = 0; j < columns; j++) {
                 let result = 0;
 
-                for(let y = 0; y < B.rowsCount(); y++) {
-                    result += A.getValue(i, y) * B.getValue(y, j);
+                for(let y = 0; y < scale; y++) {
+                    let a = A.getValue(i, y), b = B.getValue(y, j);
+
+                    if(!a || !b) {
+                        this.setState({ showErrors: true });
+                        return;
+                    }
+
+                    result +=  a * b;
                 }
 
-                Result.setValue(i, j, result);
+                newResult.setValue(i, j, result);
             }
         }
 
-        this.setState({ Result });
+        this.setState({ Result: newResult, showErrors: false });
     }
 
     clear = () => {
@@ -97,7 +109,7 @@ export default class App extends Component {
         B.clear();
         Result.clear();
 
-        this.setState({ A, B, Result });
+        this.setState({ A, B, Result, showErrors: false });
     }
 
     swap = () => {

@@ -44,6 +44,7 @@ export default class Matrix extends Component {
 
     renderCell = (cell, j, i) => {
         let placeholder = `${this.props.placeholder}${i+1},${j+1}`
+
         return (
             <div key={j+"cell"+i} className="matrix--cell">
                 <Input
@@ -51,6 +52,7 @@ export default class Matrix extends Component {
                     placeholder={placeholder}
                     disabled={this.props.disabled}
                     onChange={e => this.props.onChange(i, j, e.target.value)}
+                    showErrors={this.props.showErrors}
                 />
             </div>
         )
@@ -71,5 +73,20 @@ Matrix.propTypes = {
     /**
      * Label at the bottom of matrix
      */
-    labelBottom: PropTypes.string
+    labelBottom: PropTypes.string,
+
+    /**
+     * Show errors in empty inputs
+     */
+    showErrors: PropTypes.bool,
+
+    /**
+     * Placeholder prefix in inputs
+     */
+    placeholder: PropTypes.string,
+
+    /**
+     * Change handler to inputs
+     */
+    onChange: PropTypes.func
 };

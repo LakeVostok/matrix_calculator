@@ -5,14 +5,17 @@ import "./Input.scss";
 
 export default class Input extends Component {
     render() {
-        let { value, onChange, disabled, placeholder } = this.props;
+        let { value, onChange, disabled, placeholder, showErrors } = this.props;
+        let error = !value && showErrors
+        let className = `input${error ? " error": ""}`;
+
         return (
             <input
                 value={value}
                 placeholder={placeholder}
                 onChange={onChange}
                 disabled={disabled}
-                className="input"
+                className={className}
             />
         );
     }
@@ -22,10 +25,28 @@ Input.propTypes = {
     /**
      * Value for input element
      */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
 
     /**
      * Disabled state of input element
      */
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+
+    /**
+     * Placeholder for input
+     */
+    placeholder: PropTypes.string,
+
+    /**
+     * Change handler
+     */
+    onChange: PropTypes.func,
+
+    /**
+     * Show/hide error
+     */
+    showErrors: PropTypes.bool
 };

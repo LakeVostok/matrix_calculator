@@ -24,4 +24,9 @@
         color: #080808;
         background: #f2f2f2;
     }
+
+    &.error {
+        border-color: red;
+        box-shadow:0 0 0 1px red;
+    }
 }

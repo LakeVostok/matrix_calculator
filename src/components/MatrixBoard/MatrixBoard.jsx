@@ -6,7 +6,7 @@ import "./MatrixBoard.scss";
 
 export default class MatrixBoard extends Component {
     render() {
-        let { A, B, Result, onChange } = this.props;
+        let { A, B, Result, onChange, showErrors } = this.props;
         return (
             <div className="matrix-board">
                 <Gapped gap={40} vertical>
@@ -21,6 +21,7 @@ export default class MatrixBoard extends Component {
                             placeholder="a"
                             labelRight="A"
                             onChange={(row, column, value) => onChange("A", row, column, value)}
+                            showErrors={showErrors}
                         />
                     </Gapped>
                     <Matrix
@@ -28,6 +29,7 @@ export default class MatrixBoard extends Component {
                         placeholder="b"
                         labelBottom="B"
                         onChange={(row, column, value) => onChange("B", row, column, value)}
+                        showErrors={showErrors}
                     />
                 </Gapped>
             </div>  
