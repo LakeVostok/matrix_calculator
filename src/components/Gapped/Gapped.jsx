@@ -5,13 +5,22 @@ export default class Gapped extends Component {
     render() {
         let { children, gap } = this.props;
 
-        let style = {
+        let first = true;
+
+        let getStyle = () => ({
             display: "inline-block",
-            marginRight: gap
-        };
+            marginLeft: first ? null : gap
+        });
 
         let items = React.Children.map(children, child => {
-            return <div style={style}>{child}</div>
+            let style = getStyle();
+            first = false;
+    
+            return (
+                <div style={style}>
+                    {child}
+                </div>
+            )
         });
 
         return <div>{items}</div>
