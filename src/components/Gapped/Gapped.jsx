@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 export default class Gapped extends Component {
     render() {
-        let { children, gap } = this.props;
+        let { children, gap, vertical } = this.props;
 
         let first = true;
+        let marginDir = vertical ? "marginTop" : "marginLeft";
 
         let getStyle = () => ({
-            display: "inline-block",
-            marginLeft: first ? null : gap
+            display: !vertical ? "inline-block" : null,
+            [marginDir]: first ? null : gap
         });
 
         let items = React.Children.map(children, child => {
@@ -36,5 +37,10 @@ Gapped.propTypes = {
     /**
      * Distance between elements
      */
-    gap: PropTypes.number
+    gap: PropTypes.number,
+
+    /**
+     * Display element in vertical direction
+     */
+    vertical: PropTypes.bool
 };
