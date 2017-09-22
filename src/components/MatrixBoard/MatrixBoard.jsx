@@ -20,7 +20,7 @@ export default class MatrixBoard extends Component {
                             data={A}
                             placeholder="a"
                             labelRight="A"
-                            onChange={(row, column, value) => onChange("A", row, column, value)}
+                            onChange={(row, column, value) => onChange("A", row, column, value.replace(/[^0-9]/, ""))}
                             showErrors={showErrors}
                         />
                     </Gapped>
