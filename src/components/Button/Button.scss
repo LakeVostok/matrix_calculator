@@ -12,17 +12,17 @@
     cursor: pointer;
     white-space: nowrap;
 
-    &:focus {
-        border: 1px solid #fff;
-        box-shadow: 0 0 0 2px #5199db;
-        outline: none;
-    }
-
     &:hover {
         background: linear-gradient(#f2f2f2,#dedede) no-repeat;
         border-radius: 3px;
         border: 1px solid rgba(0,0,0, .15);
         border-bottom: 1px solid rgba(0,0,0, .3);
+    }
+
+    &:focus {
+        border: 1px solid #fff;
+        box-shadow: 0 0 0 2px #5199db;
+        outline: none;
     }
 
     &:active {
