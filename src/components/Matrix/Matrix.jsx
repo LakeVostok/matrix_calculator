@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import Gapped from "../Gapped";
 import Input from "../Input";
 
 import "./Matrix.scss";
@@ -15,9 +16,11 @@ export default class Matrix extends Component {
                 <div className="matrix">
                     <div className="bracket bracket--left"></div>
                     <div className="matrix--data">
-                        {
-                            data.map(this.renderRow)
-                        }
+                        <Gapped gap={10} vertical>
+                            {
+                                data.map(this.renderRow)
+                            }
+                        </Gapped>
                     </div>
                     <div className="bracket bracket--right"></div>
                     { labelRight && <div className="label label--right">{labelRight}</div> }
@@ -30,9 +33,11 @@ export default class Matrix extends Component {
     renderRow = (row, i) => {
         return (
             <div key={i+"row"} className="matrix--row">
-                {
-                    row.map((cell, j) => this.renderCell(cell, j, i))
-                }
+                <Gapped gap={10}>
+                    {
+                        row.map((cell, j) => this.renderCell(cell, j, i))
+                    }
+                </Gapped>
             </div>
         )
     }
