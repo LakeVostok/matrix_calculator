@@ -32,6 +32,7 @@ export default class App extends Component {
                     selectActive={this.selectActive}
                     addRow={this.addRow}
                     editSize={this.editSize}
+                    error={this.state.A.columnsCount() != this.state.B.rowsCount()}
                 />
                 <MatrixBoard
                     Result={this.state.Result.storage}

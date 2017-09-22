@@ -9,10 +9,13 @@ import Gapped from "../Gapped";
 
 export default class ButtonBoard extends Component {
     render() {
+        let { error } = this.props;
+        let className = `button-board${error ? " error" : ""}`;
+
         return (
-            <div className="button-board">
+            <div className={className}>
                 <div className="group--arrow">
-                    <ArrowButton onClick={this.props.multiply}>Умножить матрицы</ArrowButton>
+                    <ArrowButton onClick={this.props.multiply} disabled={error}>Умножить матрицы</ArrowButton>
                 </div>
                 <div className="group--button">
                     <Button onClick={this.props.clear} icon="clear">Очистить матрицы</Button>
@@ -48,6 +51,12 @@ export default class ButtonBoard extends Component {
                         <Button onClick={() => this.props.editSize("column", -1)} icon="remove">Удалить</Button>
                         cтолбец
                     </Gapped>
+                </div>
+
+                <div className="group--error">
+                    <div className="error-message">
+                        Такие матрицы нельзя перемножить, так как количество столбцов матрицы А не равно количеству строк матрицы В.
+                    </div>
                 </div>
             </div>
         );
