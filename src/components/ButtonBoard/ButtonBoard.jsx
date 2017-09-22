@@ -5,6 +5,7 @@ import "./ButtonBoard.scss";
 
 import { Button, ArrowButton } from "../Button";
 import { Radio, RadioGroup } from "../Radio";
+import Gapped from "../Gapped";
 
 export default class ButtonBoard extends Component {
     render() {
@@ -14,10 +15,10 @@ export default class ButtonBoard extends Component {
                     <ArrowButton onClick={this.props.multiply}>Умножить матрицы</ArrowButton>
                 </div>
                 <div className="group--button">
-                    <Button onClick={this.props.clear}>Очистить матрицы</Button>
+                    <Button onClick={this.props.clear} icon="clear">Очистить матрицы</Button>
                 </div>
                 <div className="group--button">
-                    <Button onClick={this.props.swap}>Поменять матрицы местами</Button>
+                    <Button onClick={this.props.swap} icon="swap">Поменять матрицы местами</Button>
                 </div>
                 <div className="group--radio">
                     <RadioGroup
@@ -25,21 +26,28 @@ export default class ButtonBoard extends Component {
                         checked={this.props.active}
                         onChange={this.props.selectActive}
                     >
-                        <Radio value="A">Матрица А</Radio>
-                        <Radio value="B">Матрица В</Radio>
+                        <Gapped gap={17}>
+                            <Radio value="A">Матрица А</Radio>
+                            <Radio value="B">Матрица В</Radio>
+                        </Gapped>
                     </RadioGroup>
+
                 </div>
 
                 <div className="group--button">
-                    <Button onClick={() => this.props.editSize("row", 1)}>Добавить</Button>
-                    <Button onClick={() => this.props.editSize("row", -1)}>Удалить</Button>
-                    Строку
+                    <Gapped gap={10}>
+                        <Button onClick={() => this.props.editSize("row", 1)} icon="add">Добавить</Button>
+                        <Button onClick={() => this.props.editSize("row", -1)} icon="remove">Удалить</Button>
+                        cтроку
+                    </Gapped>
                 </div>
 
                 <div className="group--button">
-                    <Button onClick={() => this.props.editSize("column", 1)}>Добавить</Button>
-                    <Button onClick={() => this.props.editSize("column", -1)}>Удалить</Button>
-                    Столбец
+                    <Gapped gap={10}>
+                        <Button onClick={() => this.props.editSize("column", 1)} icon="add">Добавить</Button>
+                        <Button onClick={() => this.props.editSize("column", -1)} icon="remove">Удалить</Button>
+                        cтолбец
+                    </Gapped>
                 </div>
             </div>
         );
