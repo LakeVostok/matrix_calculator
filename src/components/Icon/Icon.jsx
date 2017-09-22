@@ -8,10 +8,10 @@ export default class Icon extends Component {
         super(props);
         
         this.names = {
-            "cancel": "\uE012",
+            "clear": "\uE012",
             "swap": "\uE01F",
             "add": "\uE00D",
-            "remove": "\uE00E"
+            "remove": "\uE01E"
         };
     }
 
