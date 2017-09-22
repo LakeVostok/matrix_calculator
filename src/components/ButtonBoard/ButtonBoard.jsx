@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import "./ButtonBoard.scss";
-
 import { Button, ArrowButton } from "../Button";
 import { Radio, RadioGroup } from "../Radio";
 import Gapped from "../Gapped";
+
+import "./ButtonBoard.scss";
 
 export default class ButtonBoard extends Component {
     render() {
@@ -15,14 +15,22 @@ export default class ButtonBoard extends Component {
         return (
             <div className={className}>
                 <div className="group--arrow">
-                    <ArrowButton onClick={this.props.multiply} disabled={error}>Умножить матрицы</ArrowButton>
+                    <ArrowButton
+                        onClick={this.props.multiply}
+                        disabled={error}
+                    >
+                        Умножить матрицы
+                    </ArrowButton>
                 </div>
+
                 <div className="group--button">
                     <Button onClick={this.props.clear} icon="clear">Очистить матрицы</Button>
                 </div>
+
                 <div className="group--button">
                     <Button onClick={this.props.swap} icon="swap">Поменять матрицы местами</Button>
                 </div>
+
                 <div className="group--radio">
                     <RadioGroup
                         name="active_matrix"
@@ -39,16 +47,40 @@ export default class ButtonBoard extends Component {
 
                 <div className="group--button">
                     <Gapped gap={10}>
-                        <Button onClick={() => this.props.editSize("row", 1)} icon="add" disabled={this.props.rows >= this.props.max}>Добавить</Button>
-                        <Button onClick={() => this.props.editSize("row", -1)} icon="remove" disabled={this.props.rows <= this.props.min}>Удалить</Button>
+                        <Button
+                            onClick={() => this.props.editSize("row", 1)}
+                            icon="add"
+                            disabled={this.props.rows >= this.props.max}
+                        >
+                            Добавить
+                        </Button>
+                        <Button
+                            onClick={() => this.props.editSize("row", -1)}
+                            icon="remove"
+                            disabled={this.props.rows <= this.props.min}
+                        >
+                            Удалить
+                        </Button>
                         cтроку
                     </Gapped>
                 </div>
 
                 <div className="group--button">
                     <Gapped gap={10}>
-                        <Button onClick={() => this.props.editSize("column", 1)} icon="add" disabled={this.props.columns >= this.props.max}>Добавить</Button>
-                        <Button onClick={() => this.props.editSize("column", -1)} icon="remove" disabled={this.props.columns <= this.props.min}>Удалить</Button>
+                        <Button
+                            onClick={() => this.props.editSize("column", 1)}
+                            icon="add"
+                            disabled={this.props.columns >= this.props.max}
+                        >
+                            Добавить
+                        </Button>
+                        <Button
+                            onClick={() => this.props.editSize("column", -1)}
+                            icon="remove"
+                            disabled={this.props.columns <= this.props.min}
+                        >
+                            Удалить
+                        </Button>
                         cтолбец
                     </Gapped>
                 </div>
@@ -85,22 +117,37 @@ ButtonBoard.propTypes = {
     selectActive: PropTypes.func,
 
     /**
-     * Callback to add row
+     * Callback to edit rows/columns count
      */
-    addRow: PropTypes.func,
+    editSize: PropTypes.func,
 
     /**
-     * Callback to remove row
+     * Error state
      */
-    removeRow: PropTypes.func,
+    error: PropTypes.bool,
 
     /**
-     * Callback to add column
+     * Active matrix
      */
-    addColumn: PropTypes.func,
+    active: PropTypes.string,
 
     /**
-     * Callback to remove column
+     * Max count of rows/columns in matrix
      */
-    removeColumn: PropTypes.func
+    max: PropTypes.number,
+
+    /**
+     * Min count of rows/columns in matrix
+     */
+    min: PropTypes.number,
+
+    /**
+     * Rows count in active matrix
+     */
+    rows: PropTypes.number,
+
+    /**
+     * Columns count in active matrix
+     */
+    columns: PropTypes.number
 };

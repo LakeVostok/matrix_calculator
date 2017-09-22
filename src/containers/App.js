@@ -32,7 +32,6 @@ export default class App extends Component {
                     swap={this.swap}
                     active={this.state.active}
                     selectActive={this.selectActive}
-                    addRow={this.addRow}
                     editSize={this.editSize}
                     error={this.state.A.columnsCount() != this.state.B.rowsCount()}
                     max={this.state.max}
