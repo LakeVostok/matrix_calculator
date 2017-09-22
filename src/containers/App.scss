@@ -4,6 +4,11 @@ html, body {
     font: 14px/20px Segoe UI;
 }
 
+html, body, #root {
+    height: 100%;
+}
+
 .calculator {
     display: flex;
+    height: 100%;
 }

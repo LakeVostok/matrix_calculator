@@ -1,0 +1,19 @@
+.button-board {
+    flex: 0 302px;
+    padding: 30px 0 0 30px;
+    background: #bcbcbc;
+}
+
+.group {
+    &--arrow {
+        margin-bottom: 50px;
+    }
+
+    &--button {
+        margin-top: 10px;
+    }
+
+    &--radio {
+        margin: 60px 0 20px;
+    }
+}

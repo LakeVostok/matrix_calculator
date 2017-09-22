@@ -1,31 +1,46 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import "./ButtonBoard.scss";
+
+import { Button, ArrowButton } from "../Button";
 import { Radio, RadioGroup } from "../Radio";
 
 export default class ButtonBoard extends Component {
     render() {
         return (
-            <div>
-                <button onClick={this.props.multiply}>Умножить матрицы</button>
-                <br />
-                <button onClick={this.props.clear}>Очистить матрицы</button>
-                <br />
-                <button onClick={this.props.swap}>Поменять матрицы местами</button>
-                <br />
-                <RadioGroup
-                    name="active_matrix"
-                    checked={this.props.active}
-                    onChange={this.props.selectActive}
-                >
-                    <Radio value="A">Матрица А</Radio>
-                    <Radio value="B">Матрица В</Radio>
-                </RadioGroup>
-                <button onClick={() => this.props.editSize("row", 1)}>Добавить</button>
-                <button onClick={() => this.props.editSize("row", -1)}>Удалить</button> Строку
-                <br />
-                <button onClick={() => this.props.editSize("column", 1)}>Добавить</button>
-                <button onClick={() => this.props.editSize("column", -1)}>Удалить</button> Столбец
+            <div className="button-board">
+                <div className="group--arrow">
+                    <ArrowButton onClick={this.props.multiply}>Умножить матрицы</ArrowButton>
+                </div>
+                <div className="group--button">
+                    <Button onClick={this.props.clear}>Очистить матрицы</Button>
+                </div>
+                <div className="group--button">
+                    <Button onClick={this.props.swap}>Поменять матрицы местами</Button>
+                </div>
+                <div className="group--radio">
+                    <RadioGroup
+                        name="active_matrix"
+                        checked={this.props.active}
+                        onChange={this.props.selectActive}
+                    >
+                        <Radio value="A">Матрица А</Radio>
+                        <Radio value="B">Матрица В</Radio>
+                    </RadioGroup>
+                </div>
+
+                <div className="group--button">
+                    <Button onClick={() => this.props.editSize("row", 1)}>Добавить</Button>
+                    <Button onClick={() => this.props.editSize("row", -1)}>Удалить</Button>
+                    Строку
+                </div>
+
+                <div className="group--button">
+                    <Button onClick={() => this.props.editSize("column", 1)}>Добавить</Button>
+                    <Button onClick={() => this.props.editSize("column", -1)}>Удалить</Button>
+                    Столбец
+                </div>
             </div>
         );
     }
