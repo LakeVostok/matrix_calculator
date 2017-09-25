@@ -72,34 +72,10 @@ export default class App extends Component {
     }
 
     multiply = () => {
-        let { A, B } = this.state;
+        let { Result } = this.state;
 
-        let rows = A.rowsCount();
-        let columns = B.columnsCount();
-        let scale = B.rowsCount();
-
-        let newResult = new Result(A, B);
-
-        for(let i = 0; i < rows; i++) {
-            for(let j = 0; j < columns; j++) {
-                let result = 0;
-
-                for(let y = 0; y < scale; y++) {
-                    let a = A.getValue(i, y), b = B.getValue(y, j);
-
-                    if(!a || !b) {
-                        this.setState({ showErrors: true });
-                        return;
-                    }
-
-                    result +=  a * b;
-                }
-
-                newResult.setValue(i, j, result);
-            }
-        }
-
-        this.setState({ Result: newResult, showErrors: false });
+        Result.multiply();
+        this.setState({ Result, showErrors: true });
     }
 
     clear = () => {

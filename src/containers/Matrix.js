@@ -83,6 +83,36 @@ class Result extends Matrix {
 
         this.update();
     }
+
+    multiply = () => {
+        let { A, B } = this;
+
+        let rows = A.rowsCount();
+        let columns = B.columnsCount();
+        let scale = B.rowsCount();
+
+        let newResult = new Result(A, B);
+
+        for(let i = 0; i < rows; i++) {
+            for(let j = 0; j < columns; j++) {
+                let result = 0;
+
+                for(let y = 0; y < scale; y++) {
+                    let a = A.getValue(i, y), b = B.getValue(y, j);
+
+                    if(!a || !b) {
+                        return;
+                    }
+
+                    result +=  a * b;
+                }
+
+                newResult.setValue(i, j, result);
+            }
+        }
+
+        this.storage = newResult.storage;
+    }
 }
 
 export { Matrix, Result };
