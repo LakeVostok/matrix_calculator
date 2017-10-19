@@ -1,4 +1,5 @@
 # Калькулятор матриц
+Демонстрация [lakevostok.github.io/matrix_calculator](https://lakevostok.github.io/matrix_calculator)
 
 ### Установка
 
