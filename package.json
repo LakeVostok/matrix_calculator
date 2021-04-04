@@ -1,0 +1,50 @@
+{
+  "name": "matrix_calculator",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12.20.7",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.2.3",
+    "web-vitals": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint": "eslint .",
+    "stylelint": "stylelint **/*.css",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "creevey": "creevey --ui",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.2.2",
+    "@storybook/addon-essentials": "^6.2.2",
+    "@storybook/addon-links": "^6.2.2",
+    "@storybook/node-logger": "^6.2.2",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.2.2",
+    "creevey": "0.7.27",
+    "eslint-plugin-import": "2.22.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "stylelint": "13.12.0",
+    "stylelint-config-standard": "21.0.0"
+  },
+  "browserslist": "last 1 chrome version",
+  "lint-staged": {
+    "*.css": "npm run stylelint -- --fix",
+    "*.((j|t)s?(x))": "npm run eslint -- --fix"
+  }
+}
