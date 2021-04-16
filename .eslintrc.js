@@ -37,17 +37,14 @@ module.exports = {
 				allowTemplateLiterals: true,
 			},
 		],
-		"quote-props": ["error", "as-needed",],
+		"quote-props": ["error", "as-needed"],
 		semi: [
 			"error",
 			"always",
 		],
 		"comma-dangle": [
 			"error",
-			{
-				arrays: "always",
-				objects: "always",
-			},
+			"only-multiline",
 		],
 		indent: [
 			"error",
