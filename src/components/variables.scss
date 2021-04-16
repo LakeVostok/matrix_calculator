@@ -1,0 +1,29 @@
+@use "sass:map";
+
+$control-height-s: 30px;
+$control-height-m: 36px;
+
+$border-regular-style: 1px solid;
+$border-radius: 3px;
+
+$palette: (
+	"charcoal": #404040,
+	"grey": #808080,
+	"darkGrey1": #A6A6A6,
+	"darkGrey2": #B2B2B2,
+	"pictonBlue": #5199DB,
+	"gainsboro1": #D9D9D9,
+	"gainsboro2": #DFDFDF,
+	"white1": #FFF,
+	"white2": #FEFEFE,
+	"whiteSmoke1": #ECECEC,
+	"whiteSmoke2": #F2F2F2,
+	"gladeGreen1": #5E9450,
+	"kellyGreen1": #4BA91D,
+	"kellyGreen2": #38920C,
+	"kellyGreen3": #3B8D13,
+	"kellyGreen4": #35840E,
+	"green": #317E0B,
+	"greenHouse": #426C36,
+	"palmLeaf": #3D5333,
+);

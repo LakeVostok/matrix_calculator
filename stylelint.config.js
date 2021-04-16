@@ -5,6 +5,9 @@ module.exports = {
 		"font-family-no-missing-generic-family-keyword": [true, {
 			ignoreFontFamilies: ["Kontur-Iconic"],
 		}],
-		"color-hex-case": "upper"
+		"color-hex-case": "upper",
+		"at-rule-no-unknown": [true, {
+			ignoreAtRules: ["use", "mixin", "include"]
+		}]
 	},
 };

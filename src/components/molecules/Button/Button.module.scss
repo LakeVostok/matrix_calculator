@@ -1,0 +1,104 @@
+@use "sass:map";
+
+@import '../../variables.scss';
+
+@mixin buttonSize($height, $padding) {
+	& {
+		height: $height;
+		padding: 0 $padding;
+
+		&.hasIcon {
+			padding-left: $padding - 6;
+		}
+	}
+}
+
+@mixin buttonInteractivityStyle($colorsMap) {
+	border-color: map.get($colorsMap, "regularBorderColor");
+	color: map.get($colorsMap, "regularColor");
+	background: map.get($colorsMap, "regularBackground");
+
+	&:hover {
+		border-color: map.get($colorsMap, "hoverBorderColor");
+		background: map.get($colorsMap, "hoverBackground");
+	}
+
+	&:focus {
+		border-color: map.get($colorsMap, "focusBorderColor");
+		box-shadow: map.get($colorsMap, "focusBoxShadow");
+	}
+
+	&:active {
+		border-color: map.get($colorsMap, "activeBorderColor");
+		background: map.get($colorsMap, "activeBackground");
+		box-shadow: inset 0 2px 2px -2px map.get($colorsMap, "activeBoxShadowColor");
+	}
+
+	&:disabled {
+		background: map.get($colorsMap, "disabledBackground");
+		border-color: map.get($colorsMap, "disabledBorderColor");
+		color: map.get($colorsMap, "disabledColor");
+		box-shadow: none;
+		cursor: default;
+	}
+}
+
+$typeDefaultInteractivityColors: (
+	"regularBorderColor": map.get($palette, "gainsboro1"),
+	"regularColor": map.get($palette, "charcoal"),
+	"regularBackground": linear-gradient(map.get($palette, "white2"), map.get($palette, "whiteSmoke1")),
+	"hoverBorderColor": map.get($palette, "darkGrey2"),
+	"hoverBackground": linear-gradient(map.get($palette, "whiteSmoke2"), map.get($palette, "gainsboro2")),
+	"focusBorderColor": map.get($palette, "pictonBlue"),
+	"focusBoxShadow": (inset 0 0 0 1px map.get($palette, "pictonBlue"), inset 0 0 0 2px map.get($palette, "white1")),
+	"activeBorderColor": map.get($palette, "darkGrey1"),
+	"activeBackground": map.get($palette, "gainsboro1"),
+	"activeBoxShadowColor": map.get($palette, "darkGrey1"),
+	"disabledBackground": map.get($palette, "whiteSmoke2"),
+	"disabledBorderColor": map.get($palette, "gainsboro1"),
+	"disabledColor": map.get($palette, "grey"),
+);
+
+$typeActionInteractivityColors: (
+	"regularBorderColor": map.get($palette, "gladeGreen1"),
+	"regularColor": map.get($palette, "white1"),
+	"regularBackground": linear-gradient(map.get($palette, "kellyGreen1"), map.get($palette, "kellyGreen2")),
+	"hoverBorderColor": map.get($palette, "greenHouse"),
+	"hoverBackground": linear-gradient(map.get($palette, "kellyGreen3"), map.get($palette, "green")),
+	"focusBorderColor": map.get($palette, "pictonBlue"),
+	"focusBoxShadow": (inset 0 0 0 1px map.get($palette, "pictonBlue"), inset 0 0 0 2px map.get($palette, "white1")),
+	"activeBorderColor": map.get($palette, "palmLeaf"),
+	"activeBackground": map.get($palette, "kellyGreen4"),
+	"activeBoxShadowColor": map.get($palette, "palmLeaf"),
+	"disabledBackground": map.get($palette, "whiteSmoke2"),
+	"disabledBorderColor": map.get($palette, "gainsboro1"),
+	"disabledColor": map.get($palette, "grey"),
+);
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	border: $border-regular-style;
+	border-radius: $border-radius;
+	box-sizing: border-box;
+
+	&.size-s {
+		@include buttonSize($control-height-s, 12px);
+	}
+
+	&.size-m {
+		@include buttonSize($control-height-m, 14px);
+	}
+
+	&.type-default {
+		@include buttonInteractivityStyle($typeDefaultInteractivityColors);
+	}
+
+	&.type-action {
+		@include buttonInteractivityStyle($typeActionInteractivityColors);
+	}
+}
+
+.icon {
+	margin-right: 4px;
+}

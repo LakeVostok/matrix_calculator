@@ -1,0 +1,35 @@
+.root {
+	display: flex;
+
+	&.fdr {
+		flex-direction: row;
+	}
+
+	&.fdc {
+		flex-direction: column;
+	}
+
+	&.jcc {
+		justify-content: center;
+	}
+
+	&.jce {
+		justify-content: flex-end;
+	}
+
+	&.aic {
+		align-items: center;
+	}
+
+	&.ais {
+		align-items: flex-start;
+	}
+
+	&.fwn {
+		flex-wrap: nowrap;
+	}
+
+	&.fww {
+		flex-wrap: wrap;
+	}
+}
