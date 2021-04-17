@@ -12,8 +12,14 @@ type Result<PropType> = Array<{
 	props: PropType;
 }>;
 
-function getCombinationName<PropType>(currentPropName: keyof PropType, lastCombinations: string, combinedValue: string) {
-	if (currentPropName === "children") {
+const exeptions = [
+	"children",
+	"value",
+	"name",
+];
+
+function getCombinationName(currentPropName: string, lastCombinations: string, combinedValue: string) {
+	if (exeptions.includes(currentPropName)) {
 		return lastCombinations;
 	}
 
@@ -33,7 +39,7 @@ export function propCartesianProduct<TargetProps extends {}>(combinations: PropC
 
 	let cache: Result<TargetProps> = combinations[firstCategory].map(({ name, value }) => {
 		return {
-			name: getCombinationName<TargetProps>(firstCategory, "", name),
+			name: getCombinationName(firstCategory as string, "", name),
 			props: {
 				[firstCategory]: value,
 			} as TargetProps,
@@ -44,7 +50,7 @@ export function propCartesianProduct<TargetProps extends {}>(combinations: PropC
 		const newCombination = cache.reduce((res, lastCombinationWord) => {
 			combinations[categories[i]].forEach(({ name, value }) => {
 				res.push({
-					name: getCombinationName<TargetProps>(categories[i], lastCombinationWord.name, name),
+					name: getCombinationName(categories[i] as string, lastCombinationWord.name, name),
 					props: {
 						...lastCombinationWord.props,
 						[categories[i]]: value,

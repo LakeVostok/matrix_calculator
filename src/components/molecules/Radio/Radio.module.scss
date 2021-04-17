@@ -1,0 +1,113 @@
+@use "sass:map";
+
+@import '../../variables.scss';
+
+@mixin visuallyHidden() {
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+}
+
+@mixin radioSize($height) {
+	$outerSize: $height / 2 - 2;
+	$innerSize: $height / 4 - 1;
+
+	.pseudoRadio {
+		width: $outerSize;
+		height: $outerSize;
+
+		&::before {
+			width: $innerSize;
+			height: $innerSize;
+		}
+	}
+}
+
+@mixin pseudoRadioInteractivityStyle($colorsMap) {
+	& + .pseudoRadio {
+		border-color: map.get($colorsMap, "regularBorderColor");
+		background: map.get($colorsMap, "regularBackground");
+	}
+
+	&:hover + .pseudoRadio {
+		background: map.get($colorsMap, "hoverBackground");
+		border-color: map.get($colorsMap, "hoverBorderColor");
+	}
+
+	&:focus + .pseudoRadio {
+		box-shadow: map.get($colorsMap, "focusBoxShadow");
+		border-color: map.get($colorsMap, "focusBorderColor");
+	}
+
+	&:active + .pseudoRadio {
+		background: map.get($colorsMap, "activeBackground");
+		border-color: map.get($colorsMap, "activeBorderColor");
+		box-shadow: map.get($colorsMap, "activeBoxShadowColor");
+	}
+
+	&:checked + .pseudoRadio::before {
+		display: block;
+	}
+
+	&:disabled + .pseudoRadio {
+		background: map.get($colorsMap, "disabledBackground");
+		border-color: map.get($colorsMap, "disabledBorderColor");
+		box-shadow: none;
+		cursor: default;
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+$defaultInteractivityColors: (
+	"regularBorderColor": map.get($palette, "gainsboro1"),
+	"regularBackground": linear-gradient(map.get($palette, "white2"), map.get($palette, "whiteSmoke1")),
+	"hoverBorderColor": map.get($palette, "darkGrey2"),
+	"hoverBackground": linear-gradient(map.get($palette, "whiteSmoke2"), map.get($palette, "gainsboro2")),
+	"focusBorderColor": map.get($palette, "pictonBlue"),
+	"focusBoxShadow": (inset 0 0 0 1px map.get($palette, "pictonBlue"), inset 0 0 0 2px map.get($palette, "white1")),
+	"activeBorderColor": map.get($palette, "darkGrey1"),
+	"activeBackground": map.get($palette, "gainsboro1"),
+	"activeBoxShadowColor": (inset 0 2px 2px -2px map.get($palette, "darkGrey1")),
+	"disabledBackground": map.get($palette, "whiteSmoke2"),
+	"disabledBorderColor": map.get($palette, "gainsboro1"),
+);
+
+.root {
+	position: relative;
+	padding-left: 22px;
+	display: inline-flex;
+	align-items: center;
+
+	&.size-m {
+		@include radioSize($control-height-m);
+	}
+}
+
+.input {
+	@include visuallyHidden();
+	@include pseudoRadioInteractivityStyle($defaultInteractivityColors);
+}
+
+.pseudoRadio {
+	position: absolute;
+	left: 0;
+	box-sizing: border-box;
+	border: $border-regular-style;
+	border-radius: 50%;
+
+	&::before {
+		content: "";
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 50%;
+		background: map.get($palette, "charcoal");
+	}
+}
