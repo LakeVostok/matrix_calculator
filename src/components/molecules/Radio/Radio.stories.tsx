@@ -5,6 +5,7 @@ import type { PropCombination } from "../../utils/propCartesianProduct";
 import { Flex, FlexAlign, FlexDirection, FlexJustify, FlexWrap } from "../Flex/Flex";
 import { takeScreenshots } from "../../utils/takeScreenshots";
 import { propCartesianProduct } from "../../utils/propCartesianProduct";
+import { noop } from "../../../utils/noop";
 
 import { Radio } from "./Radio";
 
@@ -81,6 +82,12 @@ const propsVariations: PropCombination<React.ComponentProps<typeof Radio>> = {
 			value: "Radio",
 		},
 	],
+	onChange: [
+		{
+			name: "fake change handler",
+			value: noop,
+		}
+	],
 };
 
 const propsCombinations = propCartesianProduct<React.ComponentProps<typeof Radio>>(propsVariations);
@@ -95,7 +102,8 @@ export const Cases = () => {
 			{
 				propsCombinations.map(({ name, props }, i) => {
 					return (
-						<Flex 
+						<Flex
+							key={ name }
 							className={ `sequence` }
 							justifyContent={ FlexJustify.END }
 							style={ { 

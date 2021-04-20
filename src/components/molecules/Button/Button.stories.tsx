@@ -118,6 +118,7 @@ export const Cases = () => {
 				propsCombinations.map(({ name, props }, i) => {
 					return (
 						<Flex 
+							key={ name }
 							className={ `sequence` }
 							justifyContent={ FlexJustify.END }
 							style={ { 
