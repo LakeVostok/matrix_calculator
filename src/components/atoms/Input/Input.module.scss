@@ -1,0 +1,57 @@
+@use "sass:map";
+
+@import '../../variables.scss';
+@import "../../reset.scss";
+
+@mixin inputSize($height) {
+	& {
+		height: $height;
+		padding: 4px;
+	}
+}
+
+@mixin inputInteractivityStyle($colorsMap) {
+	border-color: map.get($colorsMap, "regularBorderColor");
+	box-shadow: map.get($colorsMap, "regularBoxShadow");
+	background: map.get($colorsMap, "regularBackground");
+
+	&:focus {
+		border-color: map.get($colorsMap, "focusBorderColor");
+		box-shadow: map.get($colorsMap, "focusBoxShadow");
+	}
+
+	&:disabled {
+		border-color: map.get($colorsMap, "disabledBorderColor");
+		background: map.get($colorsMap, "disabledBackground");
+		color: map.get($colorsMap, "disabledColor");
+		box-shadow: none;
+		cursor: default;
+	}
+}
+
+$defaultInteractivityColors: (
+	"regularBorderColor": map.get($palette, "gainsboro1"),
+	"regularBoxShadow": inset 0 1px 0 0 map.get($palette, "whiteSmoke2"),
+	"regularBackground": map.get($palette, "white1"),
+	"disabledBorderColor": map.get($palette, "gainsboro1"),
+	"disabledBackground": map.get($palette, "whiteSmoke2"),
+	"disabledColor": map.get($palette, "grey"),
+	"focusBorderColor": map.get($palette, "pictonBlue"),
+	"focusBoxShadow": (inset 0 0 0 1px map.get($palette, "pictonBlue"), inset 0 0 0 2px map.get($palette, "white1")),
+);
+
+.root {
+	@extend %reset-input;
+
+	border: $border-regular-style;
+
+	@include inputInteractivityStyle($defaultInteractivityColors);
+
+	&.size-s {
+		@include inputSize($control-height-s);
+	}
+
+	&.size-m {
+		@include inputSize($control-height-m);
+	}
+}
