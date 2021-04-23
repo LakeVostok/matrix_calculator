@@ -16,6 +16,7 @@ const exeptions = [
 	"children",
 	"value",
 	"name",
+	"onChange"
 ];
 
 function getCombinationName(currentPropName: string, lastCombinations: string, combinedValue: string) {

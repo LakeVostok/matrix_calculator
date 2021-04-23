@@ -1,4 +1,6 @@
 import classname from "classnames";
+import { useCallback } from "react";
+import type { ChangeEvent } from "react";
 
 import cn from "./Input.module.scss";
 
@@ -17,12 +19,18 @@ export function Input({
 	placeholder,
 	size = InputSize.M,
 	isDisabled,
+	onChange,
 }: {
 	value?: string;
 	placeholder?: string;
 	size?: InputSize;
 	isDisabled?: boolean;
+	onChange: (value: string) => void;
 }) {
+	const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+		onChange(e.target.value);
+	}, [onChange]);
+
 	return (
 		<input
 			className={ classname(cn.root, inputSizeCn[size]) }
@@ -30,6 +38,7 @@ export function Input({
 			value={ value }
 			placeholder={ placeholder }
 			disabled={ isDisabled }
+			onChange={ changeHandler }
 		/>
 	);
 }

@@ -1,11 +1,14 @@
 import type { WebDriver, WebElement } from "selenium-webdriver";
 
+export const SEQUENCE_CLASSNAME = "sequence";
+export const DESCRIPTION_CLASSNAME = "name";
+
 export async function takeScreenshots(this: {
 	browser: WebDriver;
 	expect: Chai.ExpectStatic;
 }, {
-	descriptionSelector = ".name",
-	sequenceSelector = ".sequence",
+	descriptionSelector = `.${ DESCRIPTION_CLASSNAME }`,
+	sequenceSelector = `.${ SEQUENCE_CLASSNAME }`,
 	targetSelector,
 	beforeScreen,
 }: {
