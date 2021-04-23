@@ -1,6 +1,7 @@
 @use "sass:map";
 
 @import '../../variables.scss';
+@import "../../reset.scss";
 
 @mixin buttonSize($height, $padding) {
 	& {
@@ -76,11 +77,12 @@ $typeActionInteractivityColors: (
 );
 
 .root {
+	@extend %reset-button;
+
 	display: inline-flex;
 	align-items: center;
 	border: $border-regular-style;
 	border-radius: $border-radius;
-	box-sizing: border-box;
 
 	&.size-s {
 		@include buttonSize($control-height-s, 12px);

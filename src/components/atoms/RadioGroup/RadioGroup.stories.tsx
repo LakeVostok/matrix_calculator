@@ -34,6 +34,6 @@ export function Example() {
 }
 
 export default { 
-	title: "molecules/RadioGroup",
+	title: "atoms/RadioGroup",
 	component: Example,
 };

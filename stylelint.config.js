@@ -7,7 +7,7 @@ module.exports = {
 		}],
 		"color-hex-case": "upper",
 		"at-rule-no-unknown": [true, {
-			ignoreAtRules: ["use", "mixin", "include"]
+			ignoreAtRules: ["use", "mixin", "include", "extend"]
 		}]
 	},
 };

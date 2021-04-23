@@ -1,7 +1,5 @@
 import classname from "classnames";
 
-import { ButtonNative } from "../../atoms/ButtonNative/ButtonNative";
-
 import cn from "./Button.module.scss";
 
 export enum ButtonSize {
@@ -38,17 +36,17 @@ export function Button({
 	children: React.ReactNode;
 }) {
 	return (
-		<ButtonNative
+		<button
 			className={ classname(cn.root, buttonSizeCn[size], buttonTypeCn[type], {
 				[cn.hasIcon]: Boolean(icon)
 			}) }
-			isDisabled={ isDisabled }
+			disabled={ isDisabled }
 		>
 			{ 
 				icon && <div className={ cn.icon }>{ icon }</div> 
 			}
 
 			<div>{ children }</div>
-		</ButtonNative>
+		</button>
 	);
 }

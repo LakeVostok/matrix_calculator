@@ -155,6 +155,6 @@ Cases.parameters = {
 };
 
 export default { 
-	title: "molecules/Button",
+	title: "atoms/Button",
 	component: Button,
 };

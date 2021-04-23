@@ -140,6 +140,6 @@ Cases.parameters = {
 };
 
 export default { 
-	title: "molecules/Radio",
+	title: "atoms/Radio",
 	component: Radio,
 };
