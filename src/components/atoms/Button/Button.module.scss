@@ -79,8 +79,6 @@ $typeActionInteractivityColors: (
 .root {
 	@extend %reset-button;
 
-	display: inline-flex;
-	align-items: center;
 	border: $border-regular-style;
 	border-radius: $border-radius;
 

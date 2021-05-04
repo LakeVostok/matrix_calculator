@@ -1,5 +1,7 @@
 import classname from "classnames";
 
+import { Flex, FlexDisplay } from "../Flex/Flex";
+
 import cn from "./Button.module.scss";
 
 export enum ButtonSize {
@@ -36,7 +38,9 @@ export function Button({
 	children: React.ReactNode;
 }) {
 	return (
-		<button
+		<Flex
+			tag="button"
+			display={ FlexDisplay.INLINE_FLEX }
 			className={ classname(cn.root, buttonSizeCn[size], buttonTypeCn[type], {
 				[cn.hasIcon]: Boolean(icon)
 			}) }
@@ -47,6 +51,6 @@ export function Button({
 			}
 
 			<div>{ children }</div>
-		</button>
+		</Flex>
 	);
 }

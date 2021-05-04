@@ -1,6 +1,7 @@
 import classname from "classnames";
-import { useCallback } from "react";
 import type { ChangeEvent } from "react";
+
+import { TypedMemo } from "../../../utils/TypedMemo";
 
 import cn from "./Input.module.scss";
 
@@ -14,31 +15,32 @@ const inputSizeCn = {
 	[InputSize.M]: cn["size-m"],
 };
 
-export function Input({
+function InputInternal({
 	value,
+	name,
 	placeholder,
 	size = InputSize.M,
 	isDisabled,
 	onChange,
 }: {
 	value?: string;
+	name?: string;
 	placeholder?: string;
 	size?: InputSize;
 	isDisabled?: boolean;
-	onChange: (value: string) => void;
+	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
-	const changeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		onChange(e.target.value);
-	}, [onChange]);
-
 	return (
 		<input
 			className={ classname(cn.root, inputSizeCn[size]) }
 			type="text"
+			name={ name }
 			value={ value }
 			placeholder={ placeholder }
 			disabled={ isDisabled }
-			onChange={ changeHandler }
+			onChange={ onChange }
 		/>
 	);
 }
+
+export const Input = TypedMemo(InputInternal);

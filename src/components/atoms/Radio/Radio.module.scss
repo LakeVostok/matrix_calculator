@@ -80,8 +80,6 @@ $defaultInteractivityColors: (
 .root {
 	position: relative;
 	padding-left: 22px;
-	display: inline-flex;
-	align-items: center;
 
 	&.size-m {
 		@include radioSize($control-height-m);

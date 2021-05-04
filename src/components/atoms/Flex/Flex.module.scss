@@ -1,5 +1,11 @@
 .root {
-	display: flex;
+	&.df {
+		display: flex;
+	}
+
+	&.dif {
+		display: inline-flex;
+	}
 
 	&.fdr {
 		flex-direction: row;

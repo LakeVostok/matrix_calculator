@@ -1,6 +1,8 @@
 import classname from "classnames";
 import { useCallback, memo } from "react";
 
+import { Flex, FlexDisplay } from "../Flex/Flex";
+
 import cn from "./Radio.module.scss";
 
 function RadioInternal({
@@ -23,7 +25,11 @@ function RadioInternal({
 	}, [value, onChange]);
 
 	return (
-		<label className={ classname(cn.root, cn["size-m"]) }>
+		<Flex
+			tag="label"
+			display={ FlexDisplay.INLINE_FLEX }
+			className={ classname(cn.root, cn["size-m"]) }
+		>
 			<input
 				className={ cn.input }
 				type="radio"
@@ -37,7 +43,7 @@ function RadioInternal({
 			<div className={ cn.text }>
 				{ children }
 			</div>
-		</label>
+		</Flex>
 	);
 }
 

@@ -1,0 +1,16 @@
+.row {
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.cell {
+	width: 36px;
+	margin-right: 10px;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

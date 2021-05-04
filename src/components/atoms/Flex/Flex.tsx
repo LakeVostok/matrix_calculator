@@ -1,6 +1,6 @@
 import React from "react";
+import type { ReactHTML, AllHTMLAttributes } from "react";
 import classname from "classnames";
-import type { ReactHTML, CSSProperties } from "react";
 
 import cn from "./Flex.module.scss";
 
@@ -44,28 +44,50 @@ const flexWrapCn = {
 	[FlexWrap.WRAP]: cn.fww,
 };
 
-export function Flex({
-	tag = "div",
+export enum FlexDisplay {
+	FLEX,
+	INLINE_FLEX
+}
+
+const flexDisplayCn = {
+	[FlexDisplay.FLEX]: cn.df,
+	[FlexDisplay.INLINE_FLEX]: cn.dif,
+};
+
+interface FlexProps<Tag extends keyof ReactHTML> extends AllHTMLAttributes<Tag> {
+	tag?: Tag;
+	direction?: FlexDirection;
+	justifyContent?: FlexJustify;
+	alignItems?: FlexAlign;
+	flexWrap?: FlexWrap,
+	display?: FlexDisplay,
+	children: React.ReactNode;
+}
+
+export function Flex<Tag extends keyof ReactHTML>({
+	tag,
 	className,
 	direction = FlexDirection.ROW,
 	justifyContent = FlexJustify.CENTER,
 	alignItems = FlexAlign.CENTER,
 	flexWrap = FlexWrap.NOWRAP,
+	display = FlexDisplay.FLEX,
 	style,
 	children,
-}: {
-	tag?: keyof ReactHTML;
-	className?: string;
-	direction?: FlexDirection;
-	justifyContent?: FlexJustify;
-	alignItems?: FlexAlign;
-	flexWrap?: FlexWrap,
-	style?: CSSProperties,
-	children: React.ReactNode;
-}) {
-	return React.createElement(tag, {
-		className: classname(cn.root, flexJustifyCn[justifyContent], flexAlignCn[alignItems], flexDirectionCn[direction], flexWrapCn[flexWrap], className),
+	...attrs
+}: FlexProps<Tag>) {
+	return React.createElement(tag || "div", {
+		className: classname(
+			cn.root,
+			flexJustifyCn[justifyContent], 
+			flexAlignCn[alignItems], 
+			flexDirectionCn[direction], 
+			flexWrapCn[flexWrap],
+			flexDisplayCn[display],
+			className,
+		),
 		style,
 		children,
+		...attrs,
 	});
 }
