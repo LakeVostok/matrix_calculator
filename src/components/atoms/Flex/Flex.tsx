@@ -17,11 +17,15 @@ const flexDirectionCn = {
 export enum FlexJustify {
 	CENTER,
 	END,
+	SPACE_BETWEEN,
+	START,
 }
 
 const flexJustifyCn = {
 	[FlexJustify.CENTER]: cn.jcc,
 	[FlexJustify.END]: cn.jce,
+	[FlexJustify.SPACE_BETWEEN]: cn.jcsb,
+	[FlexJustify.START]: cn.jcs
 };
 
 export enum FlexAlign {

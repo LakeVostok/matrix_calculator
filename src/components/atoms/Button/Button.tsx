@@ -1,5 +1,6 @@
 import classname from "classnames";
 
+import { TypedMemo } from "../../../utils/TypedMemo";
 import { Flex, FlexDisplay } from "../Flex/Flex";
 
 import cn from "./Button.module.scss";
@@ -24,17 +25,19 @@ const buttonTypeCn = {
 	[ButtonType.ACTION]: cn["type-action"],
 };
 
-export function Button({
+function ButtonInternal({
 	icon,
 	isDisabled,
 	type = ButtonType.DEFAULT,
 	size = ButtonSize.M,
+	onClick,
 	children,
 }: {
 	icon?: React.ReactNode;
 	isDisabled?: boolean;
 	type?: ButtonType;
 	size?: ButtonSize;
+	onClick?: () => void;
 	children: React.ReactNode;
 }) {
 	return (
@@ -45,6 +48,7 @@ export function Button({
 				[cn.hasIcon]: Boolean(icon)
 			}) }
 			disabled={ isDisabled }
+			onClick={ onClick }
 		>
 			{ 
 				icon && <div className={ cn.icon }>{ icon }</div> 
@@ -54,3 +58,5 @@ export function Button({
 		</Flex>
 	);
 }
+
+export const Button = TypedMemo(ButtonInternal);

@@ -23,6 +23,14 @@
 		justify-content: flex-end;
 	}
 
+	&.jcsb {
+		justify-content: space-between;
+	}
+
+	&.jcs {
+		justify-content: flex-start;
+	}
+
 	&.aic {
 		align-items: center;
 	}

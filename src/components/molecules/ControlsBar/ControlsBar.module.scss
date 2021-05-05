@@ -1,0 +1,49 @@
+@use "sass:map";
+
+@import '../../variables.scss';
+
+.errorWrapper {
+	display: none;
+	margin-top: 50px;
+	color: map.get($palette, "red");
+}
+
+.root {
+	width: 300px;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 30px 0 30px 20px;
+	transition: background-color 0.3s ease;
+
+	&.modeIdle {
+		background-color: map.get($palette, "lightGrey");
+	}
+
+	&.modeInput {
+		background-color: map.get($palette, "pictonBlue");
+	}
+
+	&.modeError {
+		background-color: map.get($palette, "pink");
+
+		.errorWrapper {
+			display: block;
+		}
+	}
+}
+
+.clearWrapper {
+	margin-top: 50px;
+}
+
+.swapWrapper {
+	margin-top: 10px;
+}
+
+.radioWrapper {
+	margin-top: 60px;
+}
+
+.sizeChangerWrapper {
+	margin-top: 10px;
+}
