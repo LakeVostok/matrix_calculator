@@ -65,6 +65,16 @@ const propsVariations: PropCombination<React.ComponentProps<typeof Input>> = {
 			value: undefined,
 		},
 	],
+	hasError: [
+		{
+			name: "false",
+			value: false,
+		},
+		{
+			name: "true",
+			value: true,
+		},
+	],
 	onChange: [
 		{
 			name: "fake change handler",

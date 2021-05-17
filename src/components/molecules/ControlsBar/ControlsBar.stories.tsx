@@ -48,4 +48,9 @@ export const Example = () => {
 export default { 
 	title: "molecules/ControlsBar",
 	component: Example,
+	parameters: {
+		creevey: {
+		  skip: "Not required",
+		},
+	},
 };

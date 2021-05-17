@@ -56,4 +56,9 @@ export function Primary() {
 export default { 
 	title: "molecules/Matrix",
 	component: Primary,
+	parameters: {
+		creevey: {
+		  skip: "Not required",
+		},
+	},
 } as Meta;
