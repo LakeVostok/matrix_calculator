@@ -15,6 +15,11 @@
 	box-shadow: map.get($colorsMap, "regularBoxShadow");
 	background: map.get($colorsMap, "regularBackground");
 
+	&.hasError {
+		border-color: map.get($colorsMap, "errorBorderColor");
+		box-shadow: map.get($colorsMap, "errorBoxShadow");
+	}
+
 	&:focus {
 		border-color: map.get($colorsMap, "focusBorderColor");
 		box-shadow: map.get($colorsMap, "focusBoxShadow");
@@ -38,6 +43,8 @@ $defaultInteractivityColors: (
 	"disabledColor": map.get($palette, "grey"),
 	"focusBorderColor": map.get($palette, "pictonBlue"),
 	"focusBoxShadow": (inset 0 0 0 1px map.get($palette, "pictonBlue"), inset 0 0 0 2px map.get($palette, "white1")),
+	"errorBorderColor": map.get($palette, "red"),
+	"errorBoxShadow": inset 0 0 0 1px map.get($palette, "red"),
 );
 
 .root {

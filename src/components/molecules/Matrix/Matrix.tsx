@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 import { Flex, FlexDirection, FlexDisplay } from "../../atoms/Flex/Flex";
 import { TypedMemo } from "../../../utils/TypedMemo";
@@ -9,6 +9,7 @@ function MatrixInternal<CellType>({
 	name,
 	value,
 	renderCell,
+	onChange,
 }: {
 	name: string;
 	value: Array<Array<CellType>>;
@@ -17,7 +18,9 @@ function MatrixInternal<CellType>({
 		placeholderPrefix: string;
 		rowIndex: number;
 		columnIndex: number;
+		onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 	}) => React.ReactNode;
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
 	const placeholderPrefix = name.toLowerCase();
 
@@ -35,6 +38,7 @@ function MatrixInternal<CellType>({
 							rowIndex={ rowIndex }
 							placeholderPrefix={ placeholderPrefix }
 							renderCell={ renderCell }
+							onChange={ onChange }
 						/>
 					);
 				})

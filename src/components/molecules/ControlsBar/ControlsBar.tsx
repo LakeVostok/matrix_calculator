@@ -1,5 +1,6 @@
 import classname from "classnames";
 
+import { TypedMemo } from "../../../utils/TypedMemo";
 import { Button, ButtonType, ButtonSize } from "../../atoms/Button/Button";
 import { Flex, FlexAlign, FlexDirection, FlexJustify } from "../../atoms/Flex/Flex";
 import { Icon, IconType } from "../../atoms/Icon/Icon";
@@ -30,7 +31,7 @@ const barModeCn = {
 	[ControlsBarMode.ERROR]: cn.modeError,
 };
 
-export function ControlsBar({
+function ControlsBarInternal({
 	mode,
 	rowsCount,
 	columnsCount,
@@ -45,6 +46,9 @@ export function ControlsBar({
 	onRemoveRow,
 	onAddColumn,
 	onRemoveColumn,
+	onMultiply,
+	onClear,
+	onSwap,
 }: {
 	mode: ControlsBarMode;
 	rowsCount: number,
@@ -63,6 +67,9 @@ export function ControlsBar({
 	onRemoveRow: () => void;
 	onAddColumn: () => void;
 	onRemoveColumn: () => void;
+	onMultiply: () => void;
+	onClear: () => void;
+	onSwap: () => void;
 }) {
 	return (
 		<Flex
@@ -75,6 +82,7 @@ export function ControlsBar({
 				<Button
 					type={ ButtonType.ACTION }
 					isDisabled={ mode === ControlsBarMode.ERROR }
+					onClick={ onMultiply }
 				>
 					{ strings.multiply }
 				</Button>
@@ -83,6 +91,7 @@ export function ControlsBar({
 				<Button
 					size={ ButtonSize.S }
 					icon={ clearIcon }
+					onClick={ onClear }
 				>
 					{ strings.clear }
 				</Button>
@@ -91,6 +100,7 @@ export function ControlsBar({
 				<Button
 					size={ ButtonSize.S }
 					icon={ swapIcon }
+					onClick={ onSwap }
 				>
 					{ strings.swap }
 				</Button>
@@ -123,3 +133,5 @@ export function ControlsBar({
 		</Flex>
 	);
 }
+
+export const ControlsBar = TypedMemo(ControlsBarInternal);

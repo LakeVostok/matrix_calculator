@@ -1,0 +1,22 @@
+@use "sass:map";
+
+@import '../../../../variables.scss';
+
+.leftBracket,
+.rightBracket {
+	width: 10px;
+	box-sizing: border-box;
+	border: 2px solid  map.get($palette, "charcoal");
+}
+
+.leftBracket {
+	border-right: none;
+}
+
+.rightBracket {
+	border-left: none;
+}
+
+.content {
+	padding: 10px 0;
+}

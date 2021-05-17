@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 import { TypedMemo } from "../../../../../utils/TypedMemo";
 import { Flex } from "../../../../atoms/Flex/Flex";
 
@@ -7,7 +9,8 @@ function MatrixRowInternal<CellType>({
 	row,
 	rowIndex,
 	placeholderPrefix,
-	renderCell
+	renderCell,
+	onChange,
 }: {
 	row: Array<CellType>;
 	rowIndex: number,
@@ -17,7 +20,9 @@ function MatrixRowInternal<CellType>({
 		placeholderPrefix: string;
 		rowIndex: number;
 		columnIndex: number;
+		onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 	}) => React.ReactNode;
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
 	return (
 		<Flex
@@ -30,7 +35,7 @@ function MatrixRowInternal<CellType>({
 							key={ columnIndex }
 							className={ cn.cell }
 						>
-							{ renderCell({ cell, rowIndex, columnIndex, placeholderPrefix }) }
+							{ renderCell({ cell, rowIndex, columnIndex, placeholderPrefix, onChange }) }
 						</div>
 					);
 				})

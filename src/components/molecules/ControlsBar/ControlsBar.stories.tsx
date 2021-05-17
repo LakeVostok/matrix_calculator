@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { MATRIX_A_NAME, MATRIX_B_NAME } from "../../../utils/constants";
+import { noop } from "../../../utils/noop";
 import { Flex } from "../../atoms/Flex/Flex";
 
 import { ControlsBar, ControlsBarMode } from "./ControlsBar";
@@ -36,6 +37,9 @@ export const Example = () => {
 				onRemoveRow={ () => setRowsCount(rowsCount - 1) }
 				onAddColumn={ () => setColumnsCount(columnsCount + 1) }
 				onRemoveColumn={ () => setColumnsCount(columnsCount - 1) }
+				onMultiply={ noop }
+				onClear={ noop }
+				onSwap={ noop }
 			/>
 		</Flex>
 	);

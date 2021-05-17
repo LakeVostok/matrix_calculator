@@ -31,11 +31,13 @@ const flexJustifyCn = {
 export enum FlexAlign {
 	CENTER,
 	START,
+	STRETCH,
 }
 
 const flexAlignCn = {
 	[FlexAlign.CENTER]: cn.aic,
-	[FlexAlign.START]: cn.ais,
+	[FlexAlign.START]: cn.aista,
+	[FlexAlign.STRETCH]: cn.aistr,
 };
 
 export enum FlexWrap {

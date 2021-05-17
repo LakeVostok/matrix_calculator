@@ -35,8 +35,12 @@
 		align-items: center;
 	}
 
-	&.ais {
+	&.aista {
 		align-items: flex-start;
+	}
+
+	&.aistr {
+		align-items: stretch;
 	}
 
 	&.fwn {

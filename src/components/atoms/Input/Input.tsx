@@ -21,6 +21,7 @@ function InputInternal({
 	placeholder,
 	size = InputSize.M,
 	isDisabled,
+	hasError,
 	onChange,
 }: {
 	value?: string;
@@ -28,11 +29,14 @@ function InputInternal({
 	placeholder?: string;
 	size?: InputSize;
 	isDisabled?: boolean;
-	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	hasError?: boolean;
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
 	return (
 		<input
-			className={ classname(cn.root, inputSizeCn[size]) }
+			className={ classname(cn.root, inputSizeCn[size], { 
+				[cn.hasError]: hasError,
+			}) }
 			type="text"
 			name={ name }
 			value={ value }

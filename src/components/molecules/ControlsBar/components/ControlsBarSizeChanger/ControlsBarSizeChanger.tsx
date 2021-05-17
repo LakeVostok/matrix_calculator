@@ -1,3 +1,4 @@
+import { TypedMemo } from "../../../../../utils/TypedMemo";
 import { Button } from "../../../../atoms/Button/Button";
 import { Flex, FlexAlign, FlexDirection } from "../../../../atoms/Flex/Flex";
 import { Icon, IconType } from "../../../../atoms/Icon/Icon";
@@ -14,7 +15,7 @@ const strings = {
 const addIcon = <Icon iconType={ IconType.ADD }/>;
 const removeIcon = <Icon iconType={ IconType.REMOVE }/>;
 
-export function ControlsBarSizeChanger({
+function ControlsBarSizeChangerInternal({
 	isAddRowDisabled,
 	isRemoveRowDisabled,
 	isAddColumnDisabled,
@@ -85,3 +86,5 @@ export function ControlsBarSizeChanger({
 		</Flex>
 	);
 }
+
+export const ControlsBarSizeChanger = TypedMemo(ControlsBarSizeChangerInternal);

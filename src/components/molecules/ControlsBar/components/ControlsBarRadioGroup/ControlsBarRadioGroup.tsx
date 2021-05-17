@@ -1,9 +1,10 @@
+import { TypedMemo } from "../../../../../utils/TypedMemo";
 import { Flex, FlexJustify } from "../../../../atoms/Flex/Flex";
 import { RadioGroup, Radio } from "../../../../atoms/RadioGroup/RadioGroup";
 
 import cn from "./ControlsBarRadioGroup.module.scss";
 
-export function ControlsBarRadioGroup({
+function ControlsBarRadioGroupInternal({
 	value,
 	data,
 	onChange,
@@ -43,3 +44,5 @@ export function ControlsBarRadioGroup({
 		</RadioGroup>
 	);
 }
+
+export const ControlsBarRadioGroup = TypedMemo(ControlsBarRadioGroupInternal);
