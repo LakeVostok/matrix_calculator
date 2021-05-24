@@ -11,6 +11,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "classnames": "2.3.1",
+    "cypress": "7.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -28,7 +29,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "creevey": "creevey --ui",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open --env URI=http://localhost:3000/"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.2",
