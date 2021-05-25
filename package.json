@@ -14,7 +14,8 @@
     "build-storybook": "build-storybook -s public",
     "creevey": "creevey --ui",
     "prepare": "husky install",
-    "cypress:open": "cypress open --env URI=http://localhost:3000/"
+    "cypress:open": "cypress open --env URI=http://localhost:3000/",
+    "serve": "serve -s build"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.2",
@@ -40,6 +41,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "sass": "1.32.8",
+    "serve": "11.3.2",
     "stylelint": "13.12.0",
     "stylelint-config-standard": "21.0.0",
     "typescript": "^4.2.4",
